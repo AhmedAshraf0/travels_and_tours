@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:travels_and_tours/src/data/models/test_model.dart';
 import 'package:travels_and_tours/src/presentation/widgets/card_image.dart';
+import 'package:travels_and_tours/src/presentation/widgets/destination_card.dart';
+import 'package:travels_and_tours/src/presentation/widgets/featured_stay_card.dart';
 import 'package:travels_and_tours/src/presentation/widgets/image_member_card.dart';
 import 'package:travels_and_tours/src/presentation/widgets/member_card.dart';
 import 'package:travels_and_tours/src/utils/constants/colors.dart';
@@ -58,8 +60,8 @@ class HomeScreen extends StatelessWidget {
             height: 200,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) =>
                     CardImage(testModel: listTestModel[index]),
                 separatorBuilder: (context, index) => const SizedBox(
@@ -67,8 +69,26 @@ class HomeScreen extends StatelessWidget {
                     ),
                 itemCount: listTestModel.length),
           ),
-          const SizedBox(height: 32,),
-          ImageMemberCard()
+          const SizedBox(
+            height: 32,
+          ),
+          ImageMemberCard(),
+          const SizedBox(
+            height: 32,
+          ),
+          FeaturedStayCard(),
+          const SizedBox(
+            height: 32,
+          ),
+          DestinationCard(),
+          const SizedBox(
+            height: 32,
+          ),
+          DestinationCard(),
+          const SizedBox(
+            height: 42,
+          ),
+          FeaturedStayCard()
         ],
       ),
     );
