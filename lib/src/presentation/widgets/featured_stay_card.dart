@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:travels_and_tours/src/data/models/user_ad.dart';
+import 'package:travels_and_tours/src/presentation/screens/featured_destination/featured_destination_screen.dart';
 
 class FeaturedStayCard extends StatelessWidget {
-  const FeaturedStayCard({super.key});
+  final UserAd userAd;
+
+  const FeaturedStayCard({super.key, required this.userAd});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: AlignmentDirectional.bottomStart,
       children: [
-        Image.asset('assets/camel.jpg',width: double.infinity,height: 500,fit: BoxFit.cover,),
+        Image.network(userAd.imageUrl ?? 'assets/images/image_placeholder.png',width: double.infinity,height: 500,fit: BoxFit.cover,),
         Padding(
           padding: const EdgeInsets.only(left: 24,right: 60,bottom: 24),
           child: Column(
@@ -16,7 +20,7 @@ class FeaturedStayCard extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.only(bottom: 24),
-                child: Text('17 cool stays by the water for a once-in-a-lifetime trip',
+                child: Text(userAd.title ?? '-',
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -25,7 +29,7 @@ class FeaturedStayCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(bottom: 24),
-                child: Text('Overwater villas, underwater hotels, cliffside retreats, and more.',
+                child: Text(userAd.subTitle ?? '-',
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -40,11 +44,13 @@ class FeaturedStayCard extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25.0),
                     ),
-                    child: const Text(
-                      'Explore',
+                    child: Text(
+                      userAd.buttonTitle ?? 'Press',
                       style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const FeaturedDestination()));
+                    }),
               )
             ],
           ),

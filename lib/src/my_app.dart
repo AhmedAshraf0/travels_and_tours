@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travels_and_tours/src/business_logic/home/home_bloc.dart';
+import 'package:travels_and_tours/src/data/repositories/home_repo/home_repository.dart';
 import 'package:travels_and_tours/src/presentation/screens/account/account_screen.dart';
 import 'package:travels_and_tours/src/presentation/screens/explore/explore_screen.dart';
 import 'package:travels_and_tours/src/presentation/screens/home/home_screen.dart';
@@ -27,123 +30,198 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: Constants.appName,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellowAccent),
-          useMaterial3: true,
-        ),
+      debugShowCheckedModeBanner: false,
+      title: Constants.appName,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainColor),
+        useMaterial3: true,
+      ),
       home: Scaffold(
-        appBar: AppBar(
+        backgroundColor: Colors.white,
+        bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
-          elevation: 0,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Image.asset('assets/tripstick_logo.jpeg',fit: BoxFit.fill,),
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: const TextStyle(
+            color: AppColors.mainColor,
           ),
-          leadingWidth: 180,
-          actions: const [
-            Icon(Icons.favorite_outline_rounded , size: 28,),
-            SizedBox(width: 4,),
-            Icon(Icons.notifications_none_rounded, size: 28,),
-            SizedBox(width: 16,)
-          ],
-        ),
-        bottomNavigationBar: Stack(
-          alignment: AlignmentDirectional.topCenter,
-          children: [
-            BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: const TextStyle(
-              color: AppColors.mainColor,
-            ),
-            selectedIconTheme: const IconThemeData(color: AppColors.mainColor),
-            selectedFontSize: 12.0,
-            unselectedItemColor: Colors.black,
-            unselectedIconTheme: const IconThemeData(color: Colors.black),
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            selectedItemColor: AppColors.mainColor,
-            currentIndex: _selectedIndex,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                label: "Home",
+          selectedIconTheme:
+              const IconThemeData(color: AppColors.mainColor,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.explore_outlined),
-                label: "Explore",
+          selectedFontSize: 12.0,
+          elevation: 10,
+          unselectedItemColor: Colors.black,
+          unselectedIconTheme: const IconThemeData(color: Colors.black),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: AppColors.mainColor,
+          currentIndex: _selectedIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: Icon(Icons.home_outlined),
+                  ),
+                  if(_selectedIndex == 0)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Expanded(
+                        child: Container(
+                          height: 4,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                ],
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.card_travel_outlined),
-                label: "Trips",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.share),
-                label: "Share",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle_outlined),
-                label: "Account",
-              ),
-            ],
-            onTap: (int index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-      ),
-            Container(
-              height: 2,
-              width: double.infinity,
-              color: AppColors.mainColor,
-            )
-          ],
-        ),
-        body: destinations[_selectedIndex],
-      ),
-    );
-  }
-}
-/*
-*
-        NavigationBar(
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          selectedIndex: _selectedIndex,
-          indicatorColor: AppColors.mainColor,
-          indicatorShape: null,
-          destinations: const [
-            NavigationDestination(
-              selectedIcon: Icon(Icons.home_outlined,color: Colors.yellow,),
-              icon: Icon(Icons.home_outlined, color: Colors.black,),
               label: "Home",
             ),
-            NavigationDestination(
-              selectedIcon: Icon(Icons.explore_outlined,color: Colors.yellow,),
-              icon: Icon(Icons.explore_outlined, color: Colors.black),
+            BottomNavigationBarItem(
+              icon: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: Icon(Icons.explore_outlined),
+                  ),
+                  if(_selectedIndex == 1)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Expanded(
+                        child: Container(
+                          height: 4,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               label: "Explore",
             ),
-            NavigationDestination(
-              selectedIcon: Icon(Icons.card_travel_outlined,color: Colors.yellow),
-              icon: Icon(Icons.card_travel_outlined,color: Colors.black),
+            BottomNavigationBarItem(
+              icon: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: Icon(Icons.card_travel_outlined),
+                  ),
+                  if(_selectedIndex == 2)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Expanded(
+                        child: Container(
+                          height: 4,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               label: "Trips",
             ),
-            NavigationDestination(
-              selectedIcon: Icon(Icons.share,color: Colors.yellow),
-              icon: Icon(Icons.share,color: Colors.black),
+            BottomNavigationBarItem(
+              icon: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: Icon(Icons.share),
+                  ),
+                  if(_selectedIndex == 3)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Expanded(
+                        child: Container(
+                          height: 4,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               label: "Share",
             ),
-            NavigationDestination(
-              selectedIcon: Icon(Icons.account_circle_outlined,color: Colors.yellow),
-              icon: Icon(Icons.account_circle_outlined,color: Colors.black),
+            BottomNavigationBarItem(
+              icon: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: Icon(Icons.account_circle_outlined),
+                  ),
+                  if(_selectedIndex == 4)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Expanded(
+                        child: Container(
+                          height: 4,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               label: "Account",
             ),
           ],
-          onDestinationSelected: (int index) {
+          onTap: (int index) {
             setState(() {
               _selectedIndex = index;
             });
           },
         ),
-*
-* */
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                pinned: false,
+                floating: true,
+                backgroundColor: Colors.white,
+                scrolledUnderElevation: 0,
+                elevation: 0,
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Image.asset(
+                    'assets/images/tripstick_logo.jpeg',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                leadingWidth: 180,
+                actions: const [
+                  Icon(
+                    Icons.favorite_outline_rounded,
+                    size: 28,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Icon(
+                    Icons.notifications_none_rounded,
+                    size: 28,
+                  ),
+                  SizedBox(
+                    width: 16,
+                  )
+                ],
+              ),
+            ];
+          },
+          body: RepositoryProvider(
+            create: (BuildContext context) => HomeRepository(),
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (BuildContext context) =>
+                  HomeCubit(homeRepository: context.read<HomeRepository>())..getHomeData(),
+                )
+              ], child: destinations[_selectedIndex],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

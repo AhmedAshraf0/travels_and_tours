@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:travels_and_tours/src/data/models/user_ad.dart';
 
 class DestinationCard extends StatelessWidget {
-  const DestinationCard({super.key});
+  final UserAd userAd;
+
+  const DestinationCard({super.key, required this.userAd});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +18,10 @@ class DestinationCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  'Top destinations for your next holiday',
+                  userAd.title ?? '-',
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 22,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -26,10 +29,10 @@ class DestinationCard extends StatelessWidget {
               ),
               Container(
                 child: Text(
-                  "Here's where your fellow travellers are headed",
+                  userAd.subTitle ?? '-',
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.w500),
@@ -51,8 +54,8 @@ class DestinationCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15)
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Image.asset(
-                      'assets/tanta.jpeg',
+                    child: Image.network(
+                      userAd.cities![index].imageUrl,
                       width: 280,
                       height: 210,
                       fit: BoxFit.cover,
@@ -60,7 +63,7 @@ class DestinationCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 24,bottom: 8),
-                    child: Text('Tanta', style: TextStyle(
+                    child: Text(userAd.cities![index].title, style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold
@@ -71,7 +74,7 @@ class DestinationCard extends StatelessWidget {
               separatorBuilder: (context, index) => const SizedBox(
                 width: 24,
               ),
-              itemCount: 2),
+              itemCount: userAd.cities!.length),
         )
       ],
     );
