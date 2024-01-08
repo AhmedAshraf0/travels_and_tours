@@ -1,0 +1,67 @@
+{
+    "lang": "en-gb",
+    "travel_inspiration": [
+        {
+            "id": 1,
+            "sequence": 1,
+            "type": "featured_stays",
+            "image_url": "https://res.cloudinary.com/drykvi3xr/image/upload/v1684742300/tripstick/scuba-diving_h2iagu.jpg",
+            "title": "17 cool stays by the water for a once-in-a-lifetime trip",
+            "sub_title": "Overwater villas, underwater hotels, cliffside retreats, and more.",
+            "button_title": "Explore"
+        },
+        {
+            "id": 562,
+            "sequence": 2,
+            "type": "destination_list",
+            "image_url": null,
+            "title": "Top destinations for your next holiday",
+            "sub_title": "Here's where your fellow travellers are headed",
+            "list": [{
+                    "city_id": 89712389,
+                    "title": "Paris",
+                    "sub_title": "France",
+                    "image_url": "https://media.cnn.com/api/v1/images/stellar/prod/230324090551-01-visiting-france-during-protests-what-to-know-top.jpg"
+                },
+                {
+                    "city_id": 456281,
+                    "title": "Ghent",
+                    "sub_title": "Belgium",
+                    "image_url": "https://www.travelanddestinations.com/wp-content/uploads/2020/11/Beautiful-Places-in-Belgium-Ghent-1.jpg"
+                }
+            ]
+        },
+        {
+            "id": 562,
+            "sequence": 3,
+            "type": "destination_list",
+            "image_url": null,
+            "title": "Cilinary holidays for food lovers",
+            "sub_title": "Check out the top dining spots in town",
+            "list": [{
+                    "city_id": 1253456671,
+                    "title": "Dubai",
+                    "sub_title": "UAE",
+                    "image_url": "https://www.visitdubai.com/-/media/images/leisure/detail-pages/explore-dubai/1-3-dubai-neighbourhoods-t34/dubai-neighborhood-business-bay.jpg"
+                },
+                {
+                    "city_id": 877832179,
+                    "title": "Abu Dhabi",
+                    "sub_title": "UAE",
+                    "image_url": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0a/89/c4/66.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "did": 8712892,
+            "sequence": 4,
+            "type": "featured_destination",
+            "image_url": "https://res.cloudinary.com/drykvi3xr/image/upload/v1684742299/tripstick/desert-safari_ollcdv.jpg",
+            "title": "The perfect 2 days in dubai",
+            "sub_title": "Enjoy the desert in 48 hours - we will show you how!",
+            "button_title": "Let's go"
+        }
+        
+    ]
+}
