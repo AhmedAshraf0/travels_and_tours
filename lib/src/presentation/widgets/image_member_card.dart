@@ -10,7 +10,7 @@ class ImageMemberCard extends StatelessWidget {
       alignment: AlignmentDirectional.centerEnd,
       children: [
         const MemberCard(),
-        Image.asset('assets/travelling_person.png',width: 150,height: 190,fit: BoxFit.contain,),
+        Image.asset('assets/images/travelling_person.png',width: 150,height: 190,fit: BoxFit.contain,),
         Padding(
           padding: const EdgeInsets.only(top: 10, right: 30,bottom: 150),
           child: IconButton(onPressed: (){}, icon: Icon(Icons.cancel_outlined)),
