@@ -42,14 +42,14 @@ class DestinationCard extends StatelessWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
           height: 210,
-          child: ListView.separated(
+          child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Stack(
                 alignment: AlignmentDirectional.bottomStart,
                 children: [
                   Container(
+                    margin: (index != userAd.cities!.length - 1) ? const EdgeInsets.only(left: 24) : const EdgeInsets.symmetric(horizontal: 24),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15)
                     ),
@@ -70,9 +70,6 @@ class DestinationCard extends StatelessWidget {
                     ),),
                   )
                 ],
-              ),
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 24,
               ),
               itemCount: userAd.cities!.length),
         )

@@ -11,7 +11,7 @@ import 'package:travels_and_tours/src/presentation/widgets/member_card.dart';
 import 'package:travels_and_tours/src/utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
-  List<TestModel> listTestModel = [
+  final List<TestModel> listTestModel = [
     TestModel(
         imagePath: 'assets/images/travelling.png', cardTitle: 'Travel Inspiration'),
     TestModel(
@@ -71,15 +71,10 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                     Container(
                       height: 200,
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: ListView.separated(
+                      child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) =>
-                              CardImage(testModel: listTestModel[index]),
-                          separatorBuilder: (context, index) => const SizedBox(
-                                width: 28,
-                              ),
+                          itemBuilder: (context, index) => CardImage(testModel: listTestModel[index], isLastItem: (index == listTestModel.length - 1) ? true : false),
                           itemCount: listTestModel.length),
                     ),
                     const SizedBox(
