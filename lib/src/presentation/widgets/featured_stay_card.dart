@@ -23,7 +23,7 @@ class FeaturedStayCard extends StatelessWidget {
                 child: Text(userAd.title ?? '-',
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 26, color: Colors.white, fontWeight: FontWeight.bold
                   ),),
               ),
@@ -32,7 +32,7 @@ class FeaturedStayCard extends StatelessWidget {
                 child: Text(userAd.subTitle ?? '-',
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500
                   ),),
               ),
@@ -46,7 +46,7 @@ class FeaturedStayCard extends StatelessWidget {
                     ),
                     child: Text(
                       userAd.buttonTitle ?? 'Press',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
+                      style: const TextStyle(fontSize: 18, color: Colors.black),
                     ),
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const FeaturedDestination()));

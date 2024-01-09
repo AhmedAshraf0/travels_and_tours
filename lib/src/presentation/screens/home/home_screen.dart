@@ -9,6 +9,7 @@ import 'package:travels_and_tours/src/presentation/widgets/featured_stay_card.da
 import 'package:travels_and_tours/src/presentation/widgets/image_member_card.dart';
 import 'package:travels_and_tours/src/presentation/widgets/member_card.dart';
 import 'package:travels_and_tours/src/utils/constants/colors.dart';
+import 'package:travels_and_tours/src/utils/constants/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<TestModel> listTestModel = [
@@ -80,26 +81,23 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 32,
                     ),
-                    ImageMemberCard(),
+                    const ImageMemberCard(),
                     const SizedBox(
                       height: 32,
                     ),
-                    FeaturedStayCard(userAd: homeState.homeResponse.travelInspiration.userData.first,),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    DestinationCard(userAd: homeState.homeResponse.travelInspiration.userData[1]),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    DestinationCard(userAd: homeState.homeResponse.travelInspiration.userData[2]),
-                    const SizedBox(
-                      height: 42,
-                    ),
-                    FeaturedStayCard(userAd: homeState.homeResponse.travelInspiration.userData.last,),
-                    const SizedBox(
-                      height: 42,
-                    ),
+                    ...homeState.homeResponse.travelInspiration.userData.map((userAd) {
+                    if(userAd.type?.compareTo(Constants.featuredStay) == 0 || userAd.type?.compareTo(Constants.featuredDestination) == 0){
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 32.0),
+                        child: FeaturedStayCard(userAd: userAd),
+                      );
+                    }else{
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 32.0),
+                        child: DestinationCard(userAd: userAd),
+                      );
+                    }
+                    }).toList(),
                   ],
                 ),
               )

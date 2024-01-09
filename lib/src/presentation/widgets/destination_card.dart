@@ -62,7 +62,7 @@ class DestinationCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 24,bottom: 8),
+                    padding: const EdgeInsets.only(left: 34,bottom: 16),
                     child: Text(userAd.cities![index].title, style: const TextStyle(
                         fontSize: 20,
                         color: Colors.white,

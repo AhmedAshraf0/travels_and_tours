@@ -67,11 +67,15 @@ class _MyAppState extends State<MyApp> {
                   if(_selectedIndex == 0)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Expanded(
-                        child: Container(
-                          height: 4,
-                          color: AppColors.mainColor,
-                        ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 4,
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],
@@ -86,14 +90,18 @@ class _MyAppState extends State<MyApp> {
                     padding: EdgeInsets.only(top: 8.0),
                     child: Icon(Icons.explore_outlined),
                   ),
-                  if(_selectedIndex == 1)
+                  if (_selectedIndex == 1)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Expanded(
-                        child: Container(
-                          height: 4,
-                          color: AppColors.mainColor,
-                        ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 4,
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],
@@ -111,11 +119,15 @@ class _MyAppState extends State<MyApp> {
                   if(_selectedIndex == 2)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Expanded(
-                        child: Container(
-                          height: 4,
-                          color: AppColors.mainColor,
-                        ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 4,
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],
@@ -133,11 +145,15 @@ class _MyAppState extends State<MyApp> {
                   if(_selectedIndex == 3)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Expanded(
-                        child: Container(
-                          height: 4,
-                          color: AppColors.mainColor,
-                        ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 4,
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],
@@ -155,11 +171,15 @@ class _MyAppState extends State<MyApp> {
                   if(_selectedIndex == 4)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Expanded(
-                        child: Container(
-                          height: 4,
-                          color: AppColors.mainColor,
-                        ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 4,
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                 ],
